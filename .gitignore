@@ -1,0 +1,7 @@
+*.o
+*.out
+*.exe
+tiling
+
+venv/
+.venv/
