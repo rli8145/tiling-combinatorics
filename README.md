@@ -60,7 +60,7 @@ Heavily relies on SymPy and mpmath, which allows for symbolic analysis and arbit
 
 **Features:**
 - Computes a_N four ways (recurrence, approximate closed-form, exact GF derivatives, exact closed-form with symbolic roots)
-- Prints a comparison table for N=0..20
+- Prints a comparison table for N=0..15
 - Finds the breakdown point where the approximate closed-form gives a wrong answer
 - Computes the **exact** partial fraction decomposition
 - Error analysis using mpmath
