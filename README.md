@@ -1,14 +1,14 @@
-A computational companion to my [IB Mathematics AA HL Internal Assessment](MATHIA.pdf), which was written in my senior year of high school (the version attached is revised and slightly shortened).
+A computational companion to my [IB Mathematics AA HL Internal Assessment](MATHIA.pdf), which was written in my senior year of high school (the version attached is revised and slightly shortened). The paper derives a recurrence relation, generating function, and approximate closed-form for the number of ways to tile a 2×N floor using 1×1 and 2×1 tiles. 
 
-The paper derives a recurrence relation, generating function, and approximate closed-form for the number of ways to tile a 2×N floor using 1×1 and 2×1 tiles. The paper is written to be accessible to a wide audience, and this repo further enhances understanding and verifies mathematical correctness through three components.
+The paper is written to be accessible to a wide audience, and this repo further enhances understanding and verifies mathematical correctness through the `tiling_generator.cpp` CLI and the `analysis.py` script.
 
-## Mathematical Background
+## Summary of Paper
 
 **Problem:** How many ways can you tile a 2×N floor using 1×1 and 2×1 tiles?
 
-**Recurrence:** a_N = 3·a_{N-1} + a_{N-2} − a_{N-3}, with a_0 = 1, a_1 = 2, a_2 = 7
+**Recurrence:** $a_N = 3·a_{N-1} + a_{N-2} − a_{N-3}$ with $a_0 = 1, a_1 = 2, a_2 = 7$
 
-**Generating function:** G(x) = (1 − x) / (x³ − x² − 3x + 1)
+**Generating function:** $G(x) = (1 − x) / (x³ − x² − 3x + 1)$
 
 **Sequence:** 1, 2, 7, 22, 71, 228, 733, 2356, 7573, 24342, 78243, ... 
 
@@ -16,7 +16,7 @@ The paper derives a recurrence relation, generating function, and approximate cl
 
 ### 1. C++ Tiling Enumerator (`tiling_generator.cpp`)
 
-Counts and visualizes all valid tilings using bitmask DP and backtracking. 
+Counts and visualizes all tilings using bitmask DP and backtracking - 
 
 **Compile:**
 ```bash
@@ -56,7 +56,14 @@ Tiling #2:
 
 ### 2. Python Analysis Script (`analysis.py`)
 
-Uses SymPy and mpmath, which allows for symbolic analysis and arbitrary-precision arithmetic beyond C++.
+Heavily relies on SymPy and mpmath, which allows for symbolic analysis and arbitrary-precision arithmetic beyond C++.
+
+**Features:**
+- Computes a_N four ways (recurrence, approximate closed-form, exact GF derivatives, exact closed-form with symbolic roots)
+- Prints a comparison table for N=0..20
+- Finds the breakdown point where the approximate closed-form gives a wrong answer
+- Computes the **exact** partial fraction decomposition
+- Error analysis using mpmath
 
 **Install dependencies:**
 ```bash
@@ -67,11 +74,4 @@ pip install -r requirements.txt
 ```bash
 python3 analysis.py
 ```
-
-**Features:**
-- Computes a_N four ways (recurrence, approximate closed-form, exact GF derivatives, exact closed-form with symbolic roots)
-- Prints a comparison table for N=0..20
-- Finds the breakdown point where the approximate closed-form gives a wrong answer
-- Computes the **exact** partial fraction decomposition
-- Error analysis using mpmath
 
