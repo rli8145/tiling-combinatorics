@@ -1,19 +1,3 @@
-/**
- * Computational companion for 2×N floor tiling
- *
- * Counts + enumerates ways to tile a 2×N floor using 1×1 and 2×1 tiles.
- * Verifies recurrence relation: a_N = 3*a_{N-1} + a_{N-2} - a_{N-3}
- * with initial values a_0=1, a_1=2, a_2=7.
- *
- * Compile: g++ -std=c++17 -O2 -o tiling tiling_generator.cpp
- *
- * Subcommands:
- *   ./tiling count <N>       — number of tilings for a 2×N floor
- *   ./tiling enumerate <N>   — print all tilings as ASCII grids
- *   ./tiling verify <N>      — verify recurrence vs DP for N=0..N
- *   ./tiling table <N>       — print a_0 through a_N
- */
-
 #include <iostream>
 #include <vector>
 #include <string>
