@@ -1,2 +1,1 @@
-# tiling-combinatorics
-Extension of IB Mathematics AA HL Internal Assessment
+An computational companion to my [IB Mathematics AA HL Internal Assessment](MATHIA.pdf), which was written in my senior year of high school (the version attached is revised and slightly shortened).
