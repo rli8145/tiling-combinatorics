@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
 
-from sympy import (
-    Symbol, Rational, apart, factor, solve, simplify, diff, factorial,
-    Poly, roots, nsimplify, latex, pprint, Float, N as Neval,
-    real_roots, re as sym_re, im as sym_im, CRootOf
-)
-from sympy import sqrt, cbrt, cos, pi, oo
+from sympy import Symbol, Rational, apart, diff, factorial, real_roots
 import sympy
 import mpmath
 
@@ -104,7 +99,7 @@ def compute_exact_closed_form():
 
     def exact_closed(n):
         """Compute a_N using exact roots and residues (high-precision numerical)."""
-        # Use mpmath for high-precision
+        # Use mpmath for precision
         mpmath.mp.dps = 50
         result = mpmath.mpf(0)
         for r_sym, A_val in residues:
@@ -117,7 +112,7 @@ def compute_exact_closed_form():
 # Output
 
 def main():
-    MAX_N = 20
+    MAX_N = 15
 
     print("=" * 80)
     print("  TILING ANALYSIS: 2×N Floor with 1×1 and 2×1 Tiles")
@@ -139,7 +134,7 @@ def main():
 
     # Comparison table
     print("─" * 80)
-    print("  COMPARISON TABLE: N = 0 .. 20")
+    print("  COMPARISON TABLE: N = 0 .. 15")
     print("─" * 80)
     print()
 
@@ -169,34 +164,11 @@ def main():
 
     print()
 
-    # Breakdown point
-    print("─" * 80)
-    print("  APPROXIMATE CLOSED-FORM BREAKDOWN")
-    print("─" * 80)
-    print()
-
-    if breakdown_n is not None and breakdown_n <= MAX_N:
-        print(f"  The approximate closed-form first gives a WRONG answer at N = {breakdown_n}")
-        print(f"    Exact value:       a_{breakdown_n} = {a[breakdown_n]}")
-        print(f"    Approximate value: {tiling_approx(breakdown_n):.6f}")
-        print(f"    Rounded:           {round(tiling_approx(breakdown_n))}")
-    else:
-        # Search further
-        print("  Searching beyond N=20 for the breakdown point...")
-        a_ext = tiling_recurrence(200)
-        for n in range(MAX_N + 1, 201):
-            approx_val = tiling_approx(n)
-            if round(approx_val) != a_ext[n]:
-                breakdown_n = n
-                print(f"  The approximate closed-form first gives a WRONG answer at N = {n}")
-                print(f"    Exact value:       a_{n} = {a_ext[n]}")
-                print(f"    Approximate value: {tiling_approx(n):.6f}")
-                print(f"    Rounded:           {round(tiling_approx(n))}")
-                break
-        else:
-            print("  No breakdown found up to N=200 (impressive!)")
-
-    print()
+    if breakdown_n is not None:
+        print(f"  ⚠ Approximate closed-form breaks down at N={breakdown_n}")
+        print(f"    (rounded approximation gives {round(tiling_approx(breakdown_n))}, "
+              f"correct value is {a[breakdown_n]})")
+        print()
 
     # Exact partial fraction decomposition
     print("─" * 80)
@@ -205,37 +177,6 @@ def main():
     print()
     pf = apart(G, x)
     print(f"  G(x) = {pf}")
-    print()
-    print("  This is what the paper described as 'beyond the scope' of the IA,")
-    print("  but SymPy computes it trivially using exact algebraic roots.")
-    print()
-
-    # M×N generalization
-    print("─" * 80)
-    print("  M×N TILING COUNTS (1×1 and 2×1 tiles)")
-    print("─" * 80)
-    print()
-
-    max_m = 4
-    max_n_table = 10
-
-    # Header
-    mn_label = "M\\N"
-    header = f"{mn_label:>5}"
-    for n in range(max_n_table + 1):
-        header += f" | {n:>8}"
-    print(header)
-    print("-" * len(header))
-
-    for m in range(1, max_m + 1):
-        row = f"{m:>5}"
-        for n in range(max_n_table + 1):
-            count = count_mn_tilings(m, n)
-            row += f" | {count:>8}"
-        print(row)
-
-    print()
-    print("  Note: M=2 row matches our sequence: 1, 2, 7, 22, 71, 228, 733, ...")
     print()
 
     # Error analysis
