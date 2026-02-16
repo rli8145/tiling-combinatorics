@@ -23,7 +23,7 @@ Counts and visualizes all tilings using bitmask DP and backtracking.
 g++ -std=c++17 -O2 -o tiling tiling_generator.cpp
 ```
 
-**Usage:**
+**CLI Usage:**
 ```bash
 ./tiling count 10        # Count tilings for a 2×10 floor
 ./tiling enumerate 3     # Print all tilings of a 2×3 floor as ASCII art
