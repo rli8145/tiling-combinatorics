@@ -1,6 +1,6 @@
-A computational companion to my [IB Mathematics AA HL Internal Assessment](MATHIA.pdf), which was written in my senior year of high school (the version attached is revised and slightly shortened). The paper derives a recurrence relation, generating function, and approximate closed-form for the number of ways to tile a 2×N floor using 1×1 and 2×1 tiles. 
+A computational companion to my IB Mathematics HL Internal Assessment, developed locally in early 2025. The paper itself was written in my senior year of high school and can be found [here](MATHIA.pdf) (the version attached is revised and slightly shortened). The objective is to derive a recurrence relation, generating function, and approximate closed-form for the number of ways to tile a 2×N floor using 1×1 and 2×1 tiles. 
 
-The paper is written to be accessible to a wide audience, and this repo further enhances understanding and verifies mathematical correctness through the `tiling_generator.cpp` CLI and the `analysis.py` script.
+The IA was written to be accessible to a wide audience, and this repo further enhances understanding and verifies mathematical correctness through the `tiling_generator.cpp` CLI and the `analysis.py` script.
 
 ## Summary of Paper
 
@@ -16,7 +16,7 @@ The paper is written to be accessible to a wide audience, and this repo further 
 
 ### 1. C++ Tiling Enumerator (`tiling_generator.cpp`)
 
-Counts and visualizes all tilings using bitmask DP and backtracking - 
+Counts and visualizes all tilings using bitmask DP and backtracking.
 
 **Compile:**
 ```bash
@@ -59,7 +59,7 @@ Tiling #2:
 Heavily relies on SymPy and mpmath, which allows for symbolic analysis and arbitrary-precision arithmetic beyond C++.
 
 **Features:**
-- Computes a_N four ways (recurrence, approximate closed-form, exact GF derivatives, exact closed-form with symbolic roots)
+- Computes $a_N$ four ways (recurrence, approximate closed-form, exact GF derivatives, exact closed-form with symbolic roots)
 - Prints a comparison table for N=0..15
 - Finds the breakdown point where the approximate closed-form gives a wrong answer
 - Computes the **exact** partial fraction decomposition
