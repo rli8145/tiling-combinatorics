@@ -12,6 +12,8 @@ The IA was written to be accessible to a wide audience, and this repo further en
 
 **Sequence:** 1, 2, 7, 22, 71, 228, 733, 2356, 7573, 24342, 78243, ... 
 
+![Sample](sample.png)
+
 ## Components
 
 ### 1. C++ Tiling Enumerator (`tiling_generator.cpp`)
